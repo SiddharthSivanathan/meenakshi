@@ -7,7 +7,7 @@ def _ipv4_only(host, port, family=0, type=0, proto=0, flags=0):
 
 socket.getaddrinfo = _ipv4_only
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -37,6 +37,11 @@ def get_db_connection():
 
 @app.route('/')
 def index():
+    return send_from_directory('.', 'index.html')
+
+# Optional: keep a health endpoint for API checks
+@app.route('/api/health')
+def health_check():
     return jsonify({
         "status": "ok",
         "message": "Supabase Flask API running 🚀"
@@ -168,6 +173,12 @@ def delete_feedback(feedback_id):
     except Exception as e:
         print("🔥 DB ERROR (delete):", e)
         return jsonify({"error": str(e)}), 500
+
+
+# Serve other static assets (css/js/images) from repo root
+@app.route('/<path:path>')
+def static_files(path):
+    return send_from_directory('.', path)
 
 
 # ── Run ──────────────────────────────────────────────────
