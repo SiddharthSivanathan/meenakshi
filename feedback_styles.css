@@ -1,0 +1,448 @@
+/* =========================================================
+   FEEDBACK SECTION — additions to styles.css
+   Paste this block at the END of your styles.css
+   ========================================================= */
+
+:root {
+  --clr-primary: #1F3D2B;
+  --clr-primary-light: #2D6A4F;
+  --clr-secondary: #F8FAF9;
+  --clr-white: #FFFFFF;
+  --clr-border: #E5E7EB;
+  --clr-text: #374151;
+  --clr-text-muted: #6B7280;
+  --clr-accent: #F59E0B;
+  --ff-heading: 'Cormorant Garamond', serif;
+  --ff-body: 'Inter', sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --transition: all 0.2s ease;
+}
+
+/* ── Spin keyframe for submit spinner ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Section wrapper ── */
+.feedback-section {
+  background: var(--clr-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(31,61,43,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Two-column layout ── */
+.feedback-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* ── Form card ── */
+.feedback-form-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--clr-border);
+}
+
+.feedback-form-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--clr-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+/* ── Form layout ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-text);
+  letter-spacing: 0.01em;
+}
+
+.required {
+  color: #EF4444;
+}
+
+.form-input {
+  font-family: var(--ff-body);
+  font-size: var(--fs-sm);
+  color: var(--clr-text);
+  background: var(--clr-secondary);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 0.72rem 1rem;
+  transition: var(--transition);
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: var(--clr-primary);
+  background: var(--clr-white);
+  box-shadow: 0 0 0 3px rgba(31, 61, 43, 0.10);
+}
+
+.form-input.input-error {
+  border-color: #EF4444;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+.form-err {
+  font-size: var(--fs-xs);
+  color: #EF4444;
+  min-height: 1em;
+}
+
+/* ── Star rating input ── */
+.star-rating-input {
+  display: flex;
+  gap: 4px;
+}
+
+.star-btn {
+  font-size: 2rem;
+  color: #D1D5DB;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: color 0.15s ease, transform 0.15s ease;
+  line-height: 1;
+}
+
+.star-btn:hover,
+.star-btn.active {
+  color: var(--clr-accent);
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ── Submit button (full width) ── */
+.feedback-submit-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--space-2);
+  font-size: var(--fs-base);
+  padding: 1rem 2rem;
+}
+
+/* ── Success / error banners ── */
+.feedback-success-msg,
+.feedback-error-msg {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.feedback-success-msg {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #6EE7B7;
+}
+
+.feedback-error-msg {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+/* ── Display panel ── */
+.feedback-display-wrap {
+  position: sticky;
+  top: 90px;
+}
+
+.feedback-display-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.feedback-display-title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--clr-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.feedback-count-badge {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  background: var(--clr-primary);
+  color: var(--clr-white);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+}
+
+/* ── Feedback list ── */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-height: 580px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scroll-behavior: smooth;
+}
+
+.feedback-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.feedback-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.feedback-list::-webkit-scrollbar-thumb {
+  background: rgba(31, 61, 43, 0.25);
+  border-radius: 4px;
+}
+
+/* ── Individual feedback card ── */
+.feedback-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  animation: fadeInUp 0.4s ease both;
+}
+
+.feedback-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(31, 61, 43, 0.2);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.feedback-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.fb-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-light));
+  color: var(--clr-white);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fb-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.fb-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-text);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fb-date {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+}
+
+.fb-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--clr-secondary);
+  color: var(--clr-primary);
+  border: 1px solid rgba(31,61,43,0.15);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fb-stars {
+  color: var(--clr-accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-2);
+}
+
+.fb-message {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+}
+
+/* ── Loading state ── */
+.feedback-loading {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  color: var(--clr-text-muted);
+}
+
+.feedback-loading p {
+  font-size: var(--fs-sm);
+  margin-top: var(--space-4);
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.loading-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clr-primary);
+  opacity: 0.3;
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1); }
+}
+
+/* ── No-feedback placeholder ── */
+.feedback-empty {
+  text-align: center;
+  padding: var(--space-12) var(--space-6);
+  color: var(--clr-text-muted);
+}
+
+.feedback-empty svg {
+  opacity: 0.3;
+  margin-bottom: var(--space-3);
+}
+
+.feedback-empty p {
+  font-size: var(--fs-sm);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1023px) {
+  .feedback-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-display-wrap {
+    position: static;
+  }
+
+  .feedback-list {
+    max-height: 440px;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-form-card {
+    padding: var(--space-6);
+  }
+
+  .feedback-display-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
